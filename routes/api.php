@@ -18,6 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::match(['get','post'],'/wrestlers', 'api\WrestlersFileController@index');
+Route::match(['get','post'],'/wrestlers/getGenerations', 'api\PagesController@getGenerations');
+Route::match(['get','post'],'/wrestlers/genAllProfiles', 'api\PagesController@getAllProfiles');
 
 
