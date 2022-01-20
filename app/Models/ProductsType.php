@@ -20,7 +20,7 @@ class ProductsType extends Model
 
     public function Product()
     {
-        return $this->hasMany('App\Product', 'product_type_id');
+        return $this->hasMany('App\Models\Product', 'product_type_id');
     }
 
     protected $table = 'products_type';

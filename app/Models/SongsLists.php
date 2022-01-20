@@ -19,6 +19,6 @@ class SongsLists extends Model
     protected $fillable = ['stream_id', 'played_at', 'link'];
 
     function songlist() {
-        return $this->belongsTo('App\Matches', 'stream_id','stream_number');
+        return $this->belongsTo('App\Models\Matches', 'stream_id','stream_number');
     }
 }

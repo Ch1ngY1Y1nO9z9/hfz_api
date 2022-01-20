@@ -20,7 +20,7 @@ class Products extends Model
 
     public function ProductType()
     {
-        return $this->belongsTo('App\ProductType', 'id');
+        return $this->belongsTo('App\Models\ProductType', 'id');
     }
 
     protected $table = 'products';

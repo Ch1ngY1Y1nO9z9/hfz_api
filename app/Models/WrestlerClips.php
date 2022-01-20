@@ -19,6 +19,6 @@ class WrestlerClips extends Model
     protected $fillable = ['wrestler_id','clip_title','embed_code', 'sort'];
 
     function clips() {
-        return $this->belongsTo('App\Profiles', 'wrestler_id');
+        return $this->belongsTo('App\Models\Profiles', 'wrestler_id');
     }
 }
