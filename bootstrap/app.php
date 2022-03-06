@@ -52,4 +52,22 @@ $app->singleton(
 |
 */
 
+// 正式上線後加入判斷
+// $http_orgin = @$_SERVER['HTTP_ORIGIN'];
+
+// if ($http_origin == "http://localhost"){
+//     header('Access-Control-Allow-Origin: *');
+//     header('Access-Control-Allow-Methods: *');
+//     header('Access-Control-Allow-Headers: *');
+//     header('Access-Control-Allow-Header: Origin, Content-Type, Authorzation');
+// }else{
+//     http_response_code(403);
+//     die('Forbidden');
+// }
+
+header('Access-Control-Allow-Origin: http://localhost:3000');
+header('Access-Control-Allow-Methods: *');
+header('Access-Control-Allow-Headers: Content-Type, x-requested-with');
+header('Access-Control-Allow-Credentials: true');
+
 return $app;

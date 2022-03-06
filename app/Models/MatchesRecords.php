@@ -21,4 +21,8 @@ class MatchesRecords extends Model
     function records() {
         return $this->belongsTo('App\Models\Matches', 'stream_id','stream_number');
     }
+
+    function bet() {
+        return $this->hasOne('App\Models\Betting', 'match_id', 'id');
+    }
 }
