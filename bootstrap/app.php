@@ -65,7 +65,7 @@ $app->singleton(
 //     die('Forbidden');
 // }
 
-header('Access-Control-Allow-Origin: http://localhost:3000');
+header('Access-Control-Allow-Origin: https://hfzreact.surai.xyz');
 header('Access-Control-Allow-Methods: *');
 header('Access-Control-Allow-Headers: Content-Type, x-requested-with');
 header('Access-Control-Allow-Credentials: true');
