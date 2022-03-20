@@ -34,7 +34,7 @@ class PagesController extends Controller
             $data = Banners::find(1);
             $this->setCache('banners', $data);
         } else {
-            $data = $cache['banners'];
+            $data = $cache['img'];
         }
 
         return json_encode($data);
@@ -93,7 +93,7 @@ class PagesController extends Controller
             $data = $cache;
         }
 
-        return $data;
+        return json_encode($data);
     }
 
     public function getFanbase($name)
