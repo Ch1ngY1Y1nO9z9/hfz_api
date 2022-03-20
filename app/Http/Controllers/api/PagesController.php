@@ -599,29 +599,29 @@ class PagesController extends Controller
         return $list;
     }
 
-    // public function changeDB(){
-    //     $matches = MatchesRecords::get();
+    public function changeDB(){
+        $matches = MatchesRecords::get();
 
-    //     // dd($matches);
-    //     foreach($matches as $match){
-    //         // 抓取參賽者, 清除空白, 檢查是否有斜線, 若有則先炸掉斜線再存入
-    //         $participants = $match->participants;
+        // dd($matches);
+        foreach($matches as $match){
+            // 抓取參賽者, 清除空白, 檢查是否有斜線, 若有則先炸掉斜線再存入
+            $participants = $match->participants;
 
-    //         $cleared = preg_replace('/\s(?=)/', '', $participants);
+            $cleared = preg_replace('/\s(?=)/', '', $participants);
 
-    //         if(strpos($cleared,'/') !== false){
-    //             $ary = [];
-    //             $tagTeamAry = explode('/',$cleared);
-    //             foreach($tagTeamAry as $key => $participant){
-    //                 array_push($ary, $participant);
-    //                 $match['participants'] = $ary;
-    //             }
-    //             $match->save();
-    //         }else{
-    //             $ary = [$cleared];
-    //             $match['participants'] = $ary;
-    //             $match->save();
-    //         }
-    //     }
-    // }
+            if(strpos($cleared,'/') !== false){
+                $ary = [];
+                $tagTeamAry = explode('/',$cleared);
+                foreach($tagTeamAry as $key => $participant){
+                    array_push($ary, $participant);
+                    $match['participants'] = $ary;
+                }
+                $match->save();
+            }else{
+                $ary = [$cleared];
+                $match['participants'] = $ary;
+                $match->save();
+            }
+        }
+    }
 }
