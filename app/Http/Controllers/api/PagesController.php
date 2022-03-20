@@ -34,7 +34,7 @@ class PagesController extends Controller
             $data = Banners::find(1);
             $this->setCache('banners', $data);
         } else {
-            $data = $cache['img'];
+            $data = $cache;
         }
 
         return json_encode($data);
