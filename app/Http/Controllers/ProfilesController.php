@@ -149,7 +149,7 @@ class ProfilesController extends Controller
 
     public function rank_index()
     {
-        $items = Profiles::orderBy('rank','asc')->get();
+        $items = Profiles::orderBy('rank','asc')->where('rank', '>', 0)->get();
 
         return view('admin.rank.index',compact('items'));
     }

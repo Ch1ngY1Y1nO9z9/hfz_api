@@ -43,10 +43,7 @@
                                 <a class="nav-link" href="/admin/banner">Index Banner</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/news">FightZNews</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/profile">Profile Management</a>
+                                <a class="nav-link" href="/admin/news">Arts</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/rank">Rank Management</a>

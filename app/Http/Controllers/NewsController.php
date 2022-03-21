@@ -21,7 +21,28 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
-        $new_record = News::create($request->all());
+        $data = $request->all();
+
+        $data['date'] = date('Y/m/d');
+        if($data["type"] == 'video'){
+            $data["content"] = $data["img"];
+            $data["img"] = null;
+        }else{
+            $linkAry = explode('.',$data['img']);
+            $data['thumbnail'] = '';
+            foreach($linkAry as $key => $link){
+                if($key == count($linkAry)-1){
+                    $data['thumbnail'] = $link.'m.';
+                }else if($key+1 != count($linkAry)){
+                    $data['thumbnail'] = $data['thumbnail'].$link.'.';
+                }else{
+                    $data['thumbnail'] = $data['thumbnail'].$link;
+                }
+            }
+        }
+
+
+        $new_record = News::create($data);
 
         $new_record->save();
 
@@ -29,7 +50,7 @@ class NewsController extends Controller
 
     }
 
-    public function upload_img(Request $request)
+    public function upload_img (Request $request)
     {
         $img = $request->src;
         $base64_string= explode(',', $img);

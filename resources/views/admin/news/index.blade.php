@@ -35,7 +35,7 @@
                                     <td>{{$news->type}}@if($news->type == 'video') - {{$news->video_from}}@endif</td>
                                     <td>
                                         @if($news->type == 'img')
-                                            <img src="{{$news->img}}" width="200" alt="">
+                                            <img src="{{$news->thumbnail}}" width="200" alt="">
                                         @else
                                             {{$news->description}}
                                         @endif
