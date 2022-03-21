@@ -259,7 +259,7 @@ class PagesController extends Controller
 
         if (!$cache) {
             if ($gen == 'all')
-                $data = Profiles::all();
+                $data = Profiles::orderBy('date','desc');
             else {
                 $data = Profiles::where('generations_id', $gen)->get();
             }
@@ -274,7 +274,7 @@ class PagesController extends Controller
 
     public function getArts($type)
     {
-        if ($type == 'All') $data = News::where('type', 'fan_arts')->orWhere('type', 'promote')->orderBy('created_at','desc')->get();
+        if ($type == 'All') $data = News::where('type', 'fan_arts')->orWhere('type', 'promote')->orderBy('date','desc')->get();
         else {
             $data = News::where('type', $type);
         }
