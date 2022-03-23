@@ -24,14 +24,14 @@ class NewsController extends Controller
         $data = $request->all();
 
         $data['date'] = date('Y/m/d');
-        if($data["type"] == 'video'){
+        if($data["type"] == 'Promote'){
             $data["content"] = $data["img"];
             $data["img"] = null;
         }else{
             $linkAry = explode('.',$data['img']);
             $data['thumbnail'] = '';
             foreach($linkAry as $key => $link){
-                if($key == count($linkAry)-1){
+                if($key+1 == count($linkAry)){
                     $data['thumbnail'] = $link.'m.';
                 }else if($key+1 != count($linkAry)){
                     $data['thumbnail'] = $data['thumbnail'].$link.'.';

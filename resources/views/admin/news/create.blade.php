@@ -20,8 +20,8 @@
                             <div class="form-group">
                                 <label for="type">Type</label>
                                 <select class="form-control" id="type" name="type">
-                                  <option value="img">fan art</option>
-                                  <option value="video">video</option>
+                                  <option value="fan_arts">fan art</option>
+                                  <option value="Promote">video</option>
                                 </select>
                             </div>
 
