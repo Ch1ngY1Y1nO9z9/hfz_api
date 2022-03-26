@@ -65,7 +65,7 @@ $app->singleton(
 //     die('Forbidden');
 // }
 
-header('Access-Control-Allow-Origin: https://HolofightZ.surai.xyz');
+header('Access-Control-Allow-Origin: https://holofightz.surai.xyz');
 header('Access-Control-Allow-Methods: *');
 header('Access-Control-Allow-Headers: Content-Type, x-requested-with');
 header('Access-Control-Allow-Credentials: true');
