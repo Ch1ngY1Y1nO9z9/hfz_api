@@ -568,9 +568,22 @@ class PagesController extends Controller
         $new_song->stream_id = $stream_id;
         $new_song->played_at = $game_id;
         $new_song->link = $link;
-        $new_song->save();
 
-        return 'succes, please refresh your page!';
+
+        if($new_song->save()){
+            $res = [
+                'status'=> true,
+                'msg'=> 'succes, please refresh your page!'
+            ];
+        }else {
+            $res = [
+                'status'=> false,
+                'msg'=> 'something went wrong! please try it later!'
+            ];
+        }
+
+
+        return json_encode($res);
     }
 
 
