@@ -28,9 +28,35 @@ class MatchResultController extends Controller
 
     public function store(Request $request)
     {
-        $new_record =  MatchesRecords::create($request->all());
+        $match = MatchesRecords::create($request->all());
 
-        $new_record->save();
+        // 抓取參賽者, 清除空白, 檢查是否有斜線, 若有則先炸掉斜線再存入
+        $participants = $match->participants;
+
+        // 參賽者部分去除逗號和所有空白
+        $participants = trim($participants);
+        $participants = preg_replace('/\s(?=)/', '', $participants);
+
+        // 規則部分去除逗號和頭尾空白
+        $match->rule = trim($match->rule);
+        $match->rule = str_replace(',', '', $match->rule);
+
+        // 贏家部分去除所有空白
+        $match->result = preg_replace('/\s(?=)/', '', $match->result);
+
+        if(strpos($participants,'/') !== false){
+            $ary = [];
+            $tagTeamAry = explode('/',$participants);
+            foreach($tagTeamAry as $participant){
+                array_push($ary, $participant);
+                $match['participants'] = $ary;
+            }
+            $match->save();
+        }else{
+            $ary = [$participants];
+            $match['participants'] = $ary;
+            $match->save();
+        }
 
         return redirect()->back()->with('store','success!');
     }
@@ -38,7 +64,18 @@ class MatchResultController extends Controller
     public function edit($stream_id,$id)
     {
         $item = MatchesRecords::find($id);
-        $wrestlers_name = Profiles::select('name_short')->get();
+        $wrestlers_name = Profiles::where('isVisible', '1')->select('name_short')->get();
+
+        $participants_ary = json_decode($item->participants);
+        $item->participants = '';
+
+        foreach($participants_ary as $key => $participants){
+            if($key+1 != count($participants_ary)){
+                $item->participants .= $participants.'/';
+            }else{
+                $item->participants .= $participants;
+            }
+        }
 
         return view('admin.matchResult.edit',compact('stream_id','item','wrestlers_name'));
     }
@@ -49,13 +86,34 @@ class MatchResultController extends Controller
         $item = MatchesRecords::find($id);
         $item->update($request->all());
 
-        $winners_array = explode(' ',$item->result);
-        $winners = '';
-        foreach($winners_array as $array){
-            $winners = $winners.$array;
+        // 抓取參賽者, 清除空白, 檢查是否有斜線, 若有則先炸掉斜線再存入
+        $participants = $item->participants;
+
+        // 參賽者部分去除逗號和所有空白
+        $participants = trim($participants);
+        $participants = preg_replace('/\s(?=)/', '', $participants);
+
+        // 規則部分去除逗號和頭尾空白
+        $item->rule = trim($item->rule);
+        $item->rule = str_replace(',', '', $item->rule);
+
+        // 贏家部分去除所有空白
+        $item->result = preg_replace('/\s(?=)/', '', $item->result);
+
+        if(strpos($participants,'/') !== false){
+            $ary = [];
+            $tagTeamAry = explode('/',$participants);
+            foreach($tagTeamAry as $participant){
+                array_push($ary, $participant);
+                $item['participants'] = $ary;
+            }
+            $item->save();
+        }else{
+            $ary = [$participants];
+            $item['participants'] = $ary;
+            $item->save();
         }
 
-        $item->result = $winners;
 
         $item->save();
 

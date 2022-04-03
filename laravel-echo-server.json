@@ -1,0 +1,37 @@
+{
+	"authHost": "https://hfzapi.surai.xyz/",
+	"authEndpoint": "/broadcasting/auth",
+	"clients": [
+		{
+			"appId": "9b3ba39d86ed1745",
+			"key": "c7eed93b8ac5466c2d992ee2eb18c87d"
+		}
+	],
+	"database": "redis",
+	"databaseConfig": {
+		"redis": {},
+		"sqlite": {
+			"databasePath": "/database/laravel-echo-server.sqlite"
+		}
+	},
+	"devMode": false,
+	"host": null,
+	"port": "6001",
+	"protocol": "http",
+	"socketio": {},
+	"secureOptions": 67108864,
+	"sslCertPath": "",
+	"sslKeyPath": "",
+	"sslCertChainPath": "",
+	"sslPassphrase": "",
+	"subscribers": {
+		"http": true,
+		"redis": true
+	},
+	"apiOriginAllow": {
+		"allowCors": true,
+		"allowOrigin": "https://holofightz.surai.xyz/",
+		"allowMethods": "POST",
+		"allowHeaders": "Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization, X-CSRF-TOKEN, X-Socket-Id"
+	}
+}

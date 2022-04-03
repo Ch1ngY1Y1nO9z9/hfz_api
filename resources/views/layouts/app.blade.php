@@ -35,30 +35,28 @@
                     @if(Auth::check())
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        @if(Auth::user()->role == 'admin')
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/seo">SEO</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/banner">Index Banner</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/news">Arts</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/rank">Rank Management</a>
-                            </li>
-                        @endif
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/seo">SEO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/banner">Index Banner</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/news">Arts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/rank">Rank Management</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/stream">Stream Management</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/contact">Contact us</a>
+                        </li>
 
-                        @if(Auth::user()->role == 'admin')
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/contact">Contact us</a>
-                            </li>
-                        @endif
+                        <li class="nav-item">
+                            <a class="nav-link" style="color:red;" href="/admin/clear_cache">Clear Cache(DON'T PRESS)</a>
+                        </li>
                     </ul>
                     @endif
                     <!-- Right Side Of Navbar -->

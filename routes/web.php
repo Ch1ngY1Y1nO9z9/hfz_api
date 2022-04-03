@@ -72,6 +72,9 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
         //排行榜
         Route::get('/rank','ProfilesController@rank_index');
         Route::post('/rank/update', 'ProfilesController@rank_update');
+
+        // 清除網站快取
+        Route::get('clear_cache', 'HomeController@clearCache');
     });
 
 

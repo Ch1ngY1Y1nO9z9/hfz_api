@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -61,7 +63,8 @@ class HomeController extends Controller
     }
 
     public function clearCache() {
-        Cache::flush();
+        Session::put('cleared',date('Y/m/d'));
+        Artisan::call('cache:clear');
 
         return redirect()->back();
     }
